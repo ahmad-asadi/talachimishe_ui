@@ -20,8 +20,13 @@ import Configuration from './configuration/Configuration';
 import Segments from './segments/Segments';
 
 const i18nProvider = polyglotI18nProvider(locale => {
+    console.log(locale)
+
     if (locale === 'fr') {
         return import('./i18n/fr').then(messages => messages.default);
+    }
+    else if(locale === 'fa') {
+        return import('./i18n/fa').then(messages => messages.default)
     }
 
     // Always fallback on english
@@ -31,7 +36,7 @@ const i18nProvider = polyglotI18nProvider(locale => {
 const App = () => {
     return (
         <Admin
-            title=""
+            title="test title"
             dataProvider={dataProviderFactory(
                 process.env.REACT_APP_DATA_PROVIDER || ''
             )}
